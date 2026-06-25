@@ -119,6 +119,7 @@ func (p *GigahostProvider) Resources(_ context.Context) []func() resource.Resour
 		NewDNSRedirectResource,
 		NewSSHKeyResource,
 		NewServerResource,
+		NewServerRoutedLayer3IPv4Resource,
 	}
 }
 
