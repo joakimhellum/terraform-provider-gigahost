@@ -3,6 +3,7 @@
 FEATURES:
 
 * **New Resource:** `gigahost_server_routed_layer3_ipv4` orders routed layer 3 IPv4 addresses and moves them between servers.
+* **New Resource:** `gigahost_server_ip_reverse` manages reverse DNS/PTR for server IPv4 and IPv6 addresses.
 
 BUG FIXES:
 
