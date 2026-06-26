@@ -1,5 +1,9 @@
 ## 0.5.1 (Unreleased)
 
+FEATURES:
+
+* `gigahost_server_reverse` - add a resource for managing PTR/reverse DNS on a server address.
+
 BUG FIXES:
 
 * `gigahost_server` - `os_id` is refreshed on every read, so an OS reinstalled outside Terraform updates it instead of leaving a stale value (it previously only updated the nested `os` object).
