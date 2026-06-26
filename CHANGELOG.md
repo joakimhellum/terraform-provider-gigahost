@@ -1,5 +1,9 @@
 ## 0.5.1 (Unreleased)
 
+FEATURES:
+
+* **New Resource:** `gigahost_server_ipv4` orders extra layer 2 or layer 3 IPv4 addresses and moves layer 3 IPv4 addresses between servers.
+
 BUG FIXES:
 
 * `gigahost_server` - `os_id` is refreshed on every read, so an OS reinstalled outside Terraform updates it instead of leaving a stale value (it previously only updated the nested `os` object).

@@ -366,6 +366,69 @@ paths:
         "200":
           description: The server was renamed.
 
+  /servers/{id}/ipv4:
+    post:
+      operationId: orderServerIPv4
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderServerIPv4Request'
+      responses:
+        "200":
+          description: The IPv4 address was ordered.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderServerIPv4Result'
+
+  /servers/{id}/ipv4/{ip_id}:
+    put:
+      operationId: moveServerIPv4
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: ip_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MoveServerIPv4Request'
+      responses:
+        "200":
+          description: The IPv4 address was moved.
+    delete:
+      operationId: deleteServerIPv4
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: ip_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: The IPv4 address was deleted.
+
   /servers/{id}/cancel:
     post:
       operationId: cancelServer
@@ -1034,6 +1097,44 @@ components:
         name:
           type: string
           description: New display name for the server.
+
+    OrderServerIPv4Request:
+      type: object
+      required:
+        - ip_type
+        - num_ips
+      properties:
+        ip_type:
+          type: string
+          enum: [l2, l3]
+          description: IPv4 routing mode to order.
+        num_ips:
+          type: string
+          description: Number of IPv4 addresses to order.
+
+    OrderServerIPv4Result:
+      type: object
+      properties:
+        meta:
+          type: object
+          properties:
+            status:
+              type: integer
+            ip_id:
+              type: integer
+              description: The ordered IPv4 address id.
+            ip_address:
+              type: string
+              description: The ordered IPv4 address.
+
+    MoveServerIPv4Request:
+      type: object
+      required:
+        - target_srv_id
+      properties:
+        target_srv_id:
+          type: integer
+          description: Server id to move the IPv4 address to.
 
     CancelServerRequest:
       type: object
